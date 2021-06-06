@@ -6,29 +6,20 @@ use Illuminate\Http\Request;
 use App\Article;
 
 /**
- * @OA\Info(title="My First API", version="0.1")
+ * @OA\Info(title="My First API1", version="0.1.1")
  */
 class ArticleController extends Controller
 {
     /**
      * @OA\Get(
      *      path="/api/articles",
-     *      operationId="getProjectsList",
-     *      tags={"Projects"},
-     *      summary="Get list of projects",
-     *      description="Returns list of projects",
+     *      operationId="getArticles",
+     *      summary="Get list of articles",
+     *      description="Returns list of articles",
      *      @OA\Response(
      *          response=200,
      *          description="Successful operation")
      *       ),
-     *      @OA\Response(
-     *          response=401,
-     *          description="Unauthenticated",
-     *      ),
-     *      @OA\Response(
-     *          response=403,
-     *          description="Forbidden"
-     *      )
      *     )
      */
     public function index()

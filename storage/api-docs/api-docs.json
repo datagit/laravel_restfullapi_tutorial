@@ -1,18 +1,37 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My First API",
-        "version": "0.1"
+        "title": "My First API1",
+        "version": "0.1.1"
     },
     "paths": {
         "/api/articles": {
             "get": {
-                "tags": [
-                    "Projects"
-                ],
-                "summary": "Get list of projects",
-                "description": "Returns list of projects",
-                "operationId": "getProjectsList",
+                "summary": "Get list of articles",
+                "description": "Returns list of articles",
+                "operationId": "getArticles",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/register": {
+            "post": {
+                "summary": "Post register user",
+                "description": "Returns a user",
+                "operationId": "postRegister",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreProjectRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -22,6 +41,44 @@
         }
     },
     "components": {
+        "schemas": {
+            "StoreProjectRequest": {
+                "title": "Store Project request",
+                "description": "Store Project request body data",
+                "required": [
+                    "name"
+                ],
+                "properties": {
+                    "name": {
+                        "title": "name",
+                        "description": "Name of the new user",
+                        "type": "string",
+                        "example": "A nice user name"
+                    },
+                    "email": {
+                        "title": "email",
+                        "description": "email of the new user",
+                        "type": "string",
+                        "example": "This is new user's email"
+                    },
+                    "password": {
+                        "title": "password",
+                        "description": "password of the new user",
+                        "type": "string",
+                        "format": "string",
+                        "example": 123456
+                    },
+                    "password_confirmation": {
+                        "title": "password_confirmation",
+                        "description": "password_confirmation of the new user",
+                        "type": "string",
+                        "format": "string",
+                        "example": 123456
+                    }
+                },
+                "type": "object"
+            }
+        },
         "responses": {
             "401": {
                 "description": "Unauthenticated"

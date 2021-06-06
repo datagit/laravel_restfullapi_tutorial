@@ -12,3 +12,24 @@ services:
       - DOCUMENT_ROOT_CONTEXT=public
       - ALLOW_OVERRIDE_OPTION=All
       - APPLICATION_ENV_OPTION=development
+    networks:
+      - app-network
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: 123456
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge

@@ -41,6 +41,30 @@ class RegisterController extends Controller
         ]);
     }
 
+    /**
+     * @OA\Post(
+     *      path="/api/register",
+     *      operationId="postRegister",
+     *      summary="Post register user",
+     *      description="Returns a user",
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/StoreProjectRequest")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function register(Request $request)
     {
         // Here the request is validated. The validator method is located
