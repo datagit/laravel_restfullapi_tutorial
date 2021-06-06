@@ -5,8 +5,32 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 
+/**
+ * @OA\Info(title="My First API", version="0.1")
+ */
 class ArticleController extends Controller
 {
+    /**
+     * @OA\Get(
+     *      path="/api/articles",
+     *      operationId="getProjectsList",
+     *      tags={"Projects"},
+     *      summary="Get list of projects",
+     *      description="Returns list of projects",
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation")
+     *       ),
+     *      @OA\Response(
+     *          response=401,
+     *          description="Unauthenticated",
+     *      ),
+     *      @OA\Response(
+     *          response=403,
+     *          description="Forbidden"
+     *      )
+     *     )
+     */
     public function index()
     {
         return Article::all();
@@ -21,6 +45,7 @@ class ArticleController extends Controller
     {
         return $article;
     }
+
 
     public function store(Request $request)
     {
@@ -50,7 +75,6 @@ class ArticleController extends Controller
 
     //     return 204;
     // }
-
     public function delete(Article $article)
     {
         $article->delete();

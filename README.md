@@ -52,4 +52,10 @@ curl -X POST localhost:8000/api/login \
 # https://laravel.com/docs/5.8/api-authentication
 http://127.0.0.1:8000/api/user?api_token=PN1MeRkUB7Xx064lT2O7poprUuP3ut0jFXHjD5SWOtOX2btY217jPHOT3Ajo
 http://127.0.0.1:8000/api/articles?api_token=PN1MeRkUB7Xx064lT2O7poprUuP3ut0jFXHjD5SWOtOX2btY217jPHOT3Ajo
+
+# Swagger
+# doc ngu ->: https://viblo.asia/p/l5-swagger-in-laravel-rest-apis-m68Z0x1AZkG
+# -> https://blog.quickadminpanel.com/laravel-api-documentation-with-openapiswagger/
+composer require darkaonline/l5-swagger
+php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
 ```
