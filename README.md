@@ -58,4 +58,9 @@ http://127.0.0.1:8000/api/articles?api_token=PN1MeRkUB7Xx064lT2O7poprUuP3ut0jFXH
 # -> https://blog.quickadminpanel.com/laravel-api-documentation-with-openapiswagger/
 composer require darkaonline/l5-swagger
 php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+
+
+# config -> Xdebug 3, Docker, Laravel, VScode
+# https://dev.to/getjv/xdebug-3-docker-laravel-vscode-52bi
+# -> http://localhost/
 ```

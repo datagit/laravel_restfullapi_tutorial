@@ -1,0 +1,14 @@
+version: "3"
+services:
+  backend:
+    container_name: backend
+    image: getjv/php-apache
+    restart: always
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DOCUMENT_ROOT_CONTEXT=public
+      - ALLOW_OVERRIDE_OPTION=All
+      - APPLICATION_ENV_OPTION=development
