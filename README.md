@@ -6,8 +6,8 @@
 composer require barryvdh/laravel-debugbar --dev
 composer require rap2hpoutre/laravel-log-viewer
 
-
-
+# updated docker-compose ->
+docker-compose down && docker-compose up -d
 # check connection to DB
 php artisan tinker
 DB::connection()->getPdo()

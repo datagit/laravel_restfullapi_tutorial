@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "3307:3306" #-> at pc-host -> localhost:3307
     environment:
       MYSQL_DATABASE: laravel
       MYSQL_ROOT_PASSWORD: 123456

@@ -27,7 +27,7 @@
                     "content": {
                         "application/json": {
                             "schema": {
-                                "$ref": "#/components/schemas/StoreProjectRequest"
+                                "$ref": "#/components/schemas/StoreUserRequest"
                             }
                         }
                     }
@@ -42,9 +42,9 @@
     },
     "components": {
         "schemas": {
-            "StoreProjectRequest": {
-                "title": "Store Project request",
-                "description": "Store Project request body data",
+            "StoreUserRequest": {
+                "title": "Store User request",
+                "description": "Store User request body data",
                 "required": [
                     "name"
                 ],

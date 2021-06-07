@@ -49,7 +49,7 @@ class RegisterController extends Controller
      *      description="Returns a user",
      *      @OA\RequestBody(
      *          required=true,
-     *          @OA\JsonContent(ref="#/components/schemas/StoreProjectRequest")
+     *          @OA\JsonContent(ref="#/components/schemas/StoreUserRequest")
      *      ),
      *      @OA\Response(
      *          response=200,

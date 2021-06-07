@@ -1,14 +1,14 @@
 <?php
 /**
  * @OA\Schema(
- *      title="Store Project request",
- *      description="Store Project request body data",
+ *      title="Store User request",
+ *      description="Store User request body data",
  *      type="object",
  *      required={"name"}
  * )
  */
 
-class StoreProjectRequest
+class StoreUserRequest
 {
     /**
      * @OA\Property(
