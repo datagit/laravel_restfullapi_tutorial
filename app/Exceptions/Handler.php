@@ -4,6 +4,10 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Validation\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -52,6 +56,11 @@ class Handler extends ExceptionHandler
     {
         // This will replace our 404 response with
         // a JSON response.
+        if ($exception instanceof ValidationException) {
+            return response()->json([
+                'error' => 'Bad Request'
+            ], 400);
+        }
         if ($exception instanceof ModelNotFoundException &&
             $request->wantsJson()) {
             return response()->json([
