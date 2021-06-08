@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Article;
 
+// doc for guide: -> https://github.com/DarkaOnLine/L5-Swagger/issues/318
 /**
  * @SWG\SecurityScheme(
 *       securityDefinition="APIKeyHeader",
@@ -13,8 +15,13 @@ use App\Article;
 *       name="Authentication",
 *       )
  * @OA\Info(title="My First API1", version="0.1.1")
+ * @OAS\SecurityScheme(
+ *      securityScheme="api_key_security_example",
+ *      type="apiKey",
+ *      scheme="bearer"
+ * )
  */
-class ArticleController extends Controller
+class ArticleApiController extends Controller
 {
     /**
      * @OA\Get(
@@ -26,6 +33,9 @@ class ArticleController extends Controller
      *          response=200,
      *          description="Successful operation")
      *       ),
+     *       security={
+     *           {"api_key_security_example": {}}
+     *       }
      *     )
      *
      */

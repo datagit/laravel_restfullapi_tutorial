@@ -38,14 +38,22 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
 
 # https://laravel.com/docs/5.8/api-authentication
-Route::group([
-    'middleware' => 'auth:api'
-  ], function () {
-    // Route::get('articles', 'ArticleController@index');
-    Route::get('articles/{article}', 'ArticleController@show');
-    Route::post('articles', 'ArticleController@store');
-    Route::put('articles/{article}', 'ArticleController@update');
-    Route::delete('articles/{article}', 'ArticleController@delete');
-  });
-
-  Route::middleware('auth:api')->get('/articles', 'ArticleController@index');
+// Route::group([
+//     'middleware' => 'auth:api'
+//   ], function () {
+//     // Route::get('articles', 'ArticleController@index');
+//     Route::get('articles/{article}', 'ArticleApiController@show');
+//     // Route::post('articles', 'ArticleController@store');
+//     // Route::put('articles/{article}', 'ArticleController@update');
+//     // Route::delete('articles/{article}', 'ArticleController@delete');
+//   });
+//   Route::middleware('swfix|auth:api')->get('/articles', 'Api\ArticleApiController@index');
+  Route::get('articles', 'Api\ArticleApiController@index')->middleware(['swfix', 'auth:api']);
+//   Route::group([
+//     'prefix' => 'v1',
+//     'as' => 'api.',
+//     'namespace' => 'Api',
+//     'middleware' => ['auth:api']
+//   ], function () {
+//       Route::apiResource('articles', 'ArticleApiController');
+//   });

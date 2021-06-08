@@ -56,6 +56,11 @@ http://127.0.0.1:8000/api/articles?api_token=PN1MeRkUB7Xx064lT2O7poprUuP3ut0jFXH
 # Swagger
 # doc ngu ->: https://viblo.asia/p/l5-swagger-in-laravel-rest-apis-m68Z0x1AZkG
 # -> https://blog.quickadminpanel.com/laravel-api-documentation-with-openapiswagger/
+# -> https://www.youtube.com/watch?v=TWwqV7thb58
+# https://github.com/DarkaOnLine/L5-Swagger/blob/master/tests/storage/annotations/OpenApi/Anotations.php
+
+
+# doc to fixed API Token Authentication -> https://github.com/DarkaOnLine/L5-Swagger/issues/318
 composer require darkaonline/l5-swagger
 php artisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
 
