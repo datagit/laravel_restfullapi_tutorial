@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use App\Article;
 
 /**
+ * @SWG\SecurityScheme(
+*       securityDefinition="APIKeyHeader",
+*       type="apiKey",
+*       in="header",
+*       name="Authentication",
+*       )
  * @OA\Info(title="My First API1", version="0.1.1")
  */
 class ArticleController extends Controller
@@ -21,6 +27,7 @@ class ArticleController extends Controller
      *          description="Successful operation")
      *       ),
      *     )
+     *
      */
     public function index()
     {

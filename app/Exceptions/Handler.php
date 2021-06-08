@@ -8,6 +8,7 @@ use Illuminate\Validation\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Auth\AuthenticationException;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -56,6 +57,9 @@ class Handler extends ExceptionHandler
     {
         // This will replace our 404 response with
         // a JSON response.
+        if ($exception instanceof RouteNotFoundException) {
+            return response()->json(['error' => 'Unauthenticated'], 401);
+        }
         if ($exception instanceof ValidationException) {
             return response()->json([
                 'error' => 'Bad Request'

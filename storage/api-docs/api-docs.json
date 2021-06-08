@@ -86,6 +86,14 @@
             "403": {
                 "description": "Forbidden"
             }
+        },
+        "securitySchemes": {
+            "api_key_security_example": {
+                "type": "apiKey",
+                "description": "A short description for security scheme",
+                "name": "api_key",
+                "in": "header"
+            }
         }
     },
     "security": [
