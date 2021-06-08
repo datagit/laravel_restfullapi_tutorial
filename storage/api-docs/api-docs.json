@@ -1,8 +1,16 @@
 {
     "openapi": "3.0.0",
     "info": {
-        "title": "My First API1",
-        "version": "0.1.1"
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "darius@matulionis.lt"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
     },
     "paths": {
         "/api/articles": {
@@ -10,6 +18,49 @@
                 "summary": "Get list of articles",
                 "description": "Returns list of articles",
                 "operationId": "getArticles",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "summary": "Post a articles",
+                "description": "Returns a articles",
+                "operationId": "storeArticles",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/StoreArticleRequest"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/api/articles/{article}": {
+            "get": {
+                "summary": "Get detail of article",
+                "description": "Returns a detail of article",
+                "operationId": "showArticles",
+                "parameters": [
+                    {
+                        "name": "article",
+                        "in": "path",
+                        "description": "article id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful operation"
@@ -42,6 +93,28 @@
     },
     "components": {
         "schemas": {
+            "StoreArticleRequest": {
+                "title": "Store Article request",
+                "description": "Store Article request body data",
+                "required": [
+                    "title"
+                ],
+                "properties": {
+                    "title": {
+                        "title": "title",
+                        "description": "title of the new article",
+                        "type": "string",
+                        "example": "title 01"
+                    },
+                    "body": {
+                        "title": "body",
+                        "description": "body of the new article",
+                        "type": "string",
+                        "example": "body 01"
+                    }
+                },
+                "type": "object"
+            },
             "StoreUserRequest": {
                 "title": "Store User request",
                 "description": "Store User request body data",
@@ -53,13 +126,13 @@
                         "title": "name",
                         "description": "Name of the new user",
                         "type": "string",
-                        "example": "A nice user name"
+                        "example": "user123"
                     },
                     "email": {
                         "title": "email",
                         "description": "email of the new user",
                         "type": "string",
-                        "example": "This is new user's email"
+                        "example": "user123@gmail.com"
                     },
                     "password": {
                         "title": "password",

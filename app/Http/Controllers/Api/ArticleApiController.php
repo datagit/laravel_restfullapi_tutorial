@@ -5,16 +5,28 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Article;
+use App\Http\Requests\StoreArticleRequest;
 
 // doc for guide: -> https://github.com/DarkaOnLine/L5-Swagger/issues/318
 /**
+ * * @OA\Info(
+ *      version="1.0.0",
+ *      title="L5 OpenApi",
+ *      description="L5 Swagger OpenApi description",
+ *      @OA\Contact(
+ *          email="darius@matulionis.lt"
+ *      ),
+ *     @OA\License(
+ *         name="Apache 2.0",
+ *         url="http://www.apache.org/licenses/LICENSE-2.0.html"
+ *     )
+ * )
  * @SWG\SecurityScheme(
-*       securityDefinition="APIKeyHeader",
-*       type="apiKey",
-*       in="header",
-*       name="Authentication",
-*       )
- * @OA\Info(title="My First API1", version="0.1.1")
+ *       securityDefinition="APIKeyHeader",
+ *       type="apiKey",
+ *       in="header",
+ *       name="Authentication",
+ *       )
  * @OAS\SecurityScheme(
  *      securityScheme="api_key_security_example",
  *      type="apiKey",
@@ -49,16 +61,60 @@ class ArticleApiController extends Controller
     //     return Article::find($id);
     // }
 
+    /**
+     * @OA\Get(
+     *      path="/api/articles/{article}",
+     *      operationId="showArticles",
+     *      summary="Get detail of article",
+     *      description="Returns a detail of article",
+     * @OA\Parameter(
+     *          name="article",
+     *          description="article id",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(
+     *              type="integer"
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation")
+     *       ),
+     *       security={
+     *           {"api_key_security_example": {}}
+     *       }
+     *     )
+     *
+     */
     public function show(Article $article)
     {
         return $article;
     }
 
-
-    public function store(Request $request)
+    /**
+     * @OA\Post(
+     *      path="/api/articles",
+     *      operationId="storeArticles",
+     *      summary="Post a articles",
+     *      description="Returns a articles",
+     * @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(ref="#/components/schemas/StoreArticleRequest")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Successful operation")
+     *       )
+     *     )
+     */
+    public function store(StoreArticleRequest $request)
     {
-        $article = Article::create($request->all());
-        return response()->json($article, 201);
+        // Retrieve the validated input data...
+        $validated = $request->validated();
+        if ($validated) {
+            $article = Article::create($request->all());
+            return response()->json($article, 201);
+        }
     }
 
     // public function update(Request $request, $id)

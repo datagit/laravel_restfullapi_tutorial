@@ -30,7 +30,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // Route::put('articles/{article}', 'ArticleController@update');
 // Route::delete('articles/{article}', 'ArticleController@delete');
 
-
 Route::post('register', 'Auth\RegisterController@register');
 
 Route::post('login', 'Auth\LoginController@login');
@@ -38,22 +37,19 @@ Route::post('login', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
 
 # https://laravel.com/docs/5.8/api-authentication
-// Route::group([
-//     'middleware' => 'auth:api'
-//   ], function () {
-//     // Route::get('articles', 'ArticleController@index');
-//     Route::get('articles/{article}', 'ArticleApiController@show');
-//     // Route::post('articles', 'ArticleController@store');
-//     // Route::put('articles/{article}', 'ArticleController@update');
-//     // Route::delete('articles/{article}', 'ArticleController@delete');
-//   });
-//   Route::middleware('swfix|auth:api')->get('/articles', 'Api\ArticleApiController@index');
-  Route::get('articles', 'Api\ArticleApiController@index')->middleware(['swfix', 'auth:api']);
-//   Route::group([
-//     'prefix' => 'v1',
-//     'as' => 'api.',
-//     'namespace' => 'Api',
-//     'middleware' => ['auth:api']
-//   ], function () {
-//       Route::apiResource('articles', 'ArticleApiController');
-//   });
+
+// Route::get('articles', 'Api\ArticleApiController@index')->middleware([
+//     'swfix',
+//     'auth:api',
+// ]);
+
+Route::group([
+    'middleware' => 'swfix',
+    'middleware' => 'auth:api'
+  ], function () {
+    Route::get('articles', 'Api\ArticleApiController@index');
+    Route::get('articles/{article}', 'Api\ArticleApiController@show');
+    Route::post('articles', 'Api\ArticleApiController@store');
+    Route::put('articles/{article}', 'Api\ArticleApiController@update');
+    Route::delete('articles/{article}', 'Api\ArticleApiController@delete');
+  });

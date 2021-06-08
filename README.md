@@ -73,4 +73,6 @@ php artisan l5-swagger:generate
 # -> http://localhost/
 
 docker exec -it backend php artisan
+
+php artisan make:request StoreArticleRequest
 ```

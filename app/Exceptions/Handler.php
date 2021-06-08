@@ -62,7 +62,8 @@ class Handler extends ExceptionHandler
         }
         if ($exception instanceof ValidationException) {
             return response()->json([
-                'error' => 'Bad Request'
+                'error' => 'Bad Request',
+                'message' => $exception->getMessage()
             ], 400);
         }
         if ($exception instanceof ModelNotFoundException &&

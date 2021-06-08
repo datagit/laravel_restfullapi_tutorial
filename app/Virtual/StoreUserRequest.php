@@ -14,7 +14,7 @@ class StoreUserRequest
      * @OA\Property(
      *      title="name",
      *      description="Name of the new user",
-     *      example="A nice user name"
+     *      example="user123"
      * )
      *
      * @var string
@@ -25,7 +25,7 @@ class StoreUserRequest
      * @OA\Property(
      *      title="email",
      *      description="email of the new user",
-     *      example="This is new user's email"
+     *      example="user123@gmail.com"
      * )
      *
      * @var string
